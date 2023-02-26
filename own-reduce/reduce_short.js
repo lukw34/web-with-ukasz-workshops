@@ -1,18 +1,7 @@
-Array.prototype.ownReduce = function(callbackFun, initialValue) {
-    let reduceInitialValue;
-    let startIndex;
+Array.prototype.ownReduce = function(callbackFun, initialValue = this[0]) {
+    let result = initialValue;
 
-    if(initialValue) {
-        reduceInitialValue = initialValue;
-        startIndex = 0;
-    } else {
-        reduceInitialValue = this[0];
-        startIndex = 1;
-    }
-
-    let result = reduceInitialValue;
-
-    for(index = startIndex; index < this.length; index++) {
+    for(let index = arguments.length > 1 ? 0 : 1; index < this.length; index++) {
         result = callbackFun(result, this[index]);
     }
 
